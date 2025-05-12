@@ -1,0 +1,202 @@
+body {
+    position: relative;
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    background-image: url('ilustraciones_pagina/fondo.webp');
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Ajusta el nivel de opacidad (0 = transparente, 1 = sólido) */
+    z-index: -1; /* Evita que cubra el contenido */
+}
+
+  .container {
+    max-width: 900px;
+    margin: auto;
+    padding: 2rem;
+  }
+
+  /* CAJA DE REGALO */
+  .box {
+    position: relative;
+    width: 300px; /* Aumenté el tamaño */
+    height: 400px;
+    margin: 5rem auto; /* Separa más la caja */
+    background: url('ilustraciones_pagina/caja_cerrada.png') no-repeat center/contain;
+    cursor: pointer;
+    transition: transform 0.5s;
+    overflow: visible;
+    padding-top: 100px; /* Esto genera margen en la parte superior */
+}
+
+
+  .box:hover {
+    transform: scale(1.05);
+  }
+
+  @keyframes liftLid {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-50px); /* Levanta la tapa */
+    }
+}
+
+.box.semiabierta {
+    background: url('ilustraciones_pagina/caja_semiabierta.png') no-repeat center/contain;
+    animation: liftLid 0.5s ease-in-out forwards;
+}
+
+
+
+  @keyframes slideDown {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(200px); /* Baja la caja */
+    }
+}
+
+.box.abierta {
+    background: url('ilustraciones_pagina/caja_abierta.png') no-repeat center/contain;
+    animation: slideDown 1s ease-in-out forwards;
+}
+
+
+  /* MENSAJE OCULTO */
+  .message {
+    display: none;
+    animation: fadeIn 2s forwards;
+    margin-top: 2rem;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+
+  #le{
+    color: #ff0000;
+  }
+
+#ña{
+    color: rgb(230, 230, 230);
+    
+}
+
+  h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5rem;
+    color: #050002;
+  }
+
+  /* BOTÓN FINAL */
+  .final-button {
+    margin-top: 2rem;
+    background: #ff4081;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  /* LIENZO CONFETI */
+  .confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 100;
+  }
+  #confettiCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+
+  /* Parte de las cartas */
+
+  .paper {
+    background-image: url("https://i0.wp.com/textures.world/wp-content/uploads/2018/10/2-Millimeter-Paper-Background-copy.jpg?ssl=1");
+    background-size: 300px;
+    background-position: center center;
+    padding: 10px 100px;
+    min-width: 600px; 
+    transform: rotateZ(-5deg);
+    box-shadow: 1px 15px 20px 0px rgba(0,0,0,0.5);
+    position: absolute;
+    height: auto;
+    background-size: 300px; /* Disminuir el tamaño del fondo */
+    opacity: 0;
+
+  }
+  
+  .paper.heart {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    padding: 0;
+    border-radius: 50%;
+  }
+  
+  .paper.image {
+    padding: 10px;
+  }
+  .paper.image p {
+    font-size: 20px;
+  }
+  
+  img {
+    max-height: 200px;
+    width: 100%;
+    user-select: none;
+  }
+  
+  .paper.heart::after {
+    content: "";
+    background-image: url('https://cdn.pixabay.com/photo/2016/03/31/19/25/cartoon-1294994__340.png');
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: 100px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+  }
+  
+  p {
+    font-family: 'Zeyada';
+    font-size: 50px;
+    color: rgb(173, 54, 60);
+    opacity: 0.75;
+    user-select: none;
+    filter: drop-shadow(2px 1.5px 1px rgba(0,0,105,0.9));
+  }
+
+  .papers-container {
+    position: absolute;
+    top: -250px; /* Elevar las cartas un poco más arriba */
+    left: 5%;
+    transform: translate(-50%, 0); /* Ajuste más preciso */
+    pointer-events: auto;
+}
